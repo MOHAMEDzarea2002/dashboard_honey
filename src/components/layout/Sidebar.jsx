@@ -10,21 +10,21 @@ import { CiLogout } from 'react-icons/ci';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { logoutUser } from '../../services/authServices';
-export default function Sidebar({ setShowSidebar, showSidebar }) {
+export default function Sidebar({ onClick, showSidebar }) {
   const [activeLink, setActiveLink] = useState(1);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const Links = [
     { id: 1, to: '/', name: 'Dashboard', icon: <MdOutlineDashboard /> },
     { id: 2, to: '/products', name: 'Products', icon: <VscOpenInProduct /> },
     { id: 3, to: '/orders', name: 'Orders', icon: <IoCartOutline /> },
   ];
   // Handel Sidebar
-  const HandelSidebarHidingAndShow = () => {
-    setShowSidebar(!showSidebar);
-  };
-  const handleLogout = ()=>{
+  // const HandelSidebarHidingAndShow = () => {
+  //   setShowSidebar(!showSidebar);
+  // };
+  const handleLogout = () => {
     dispatch(logoutUser());
-  }
+  };
   return (
     <div
       className=" h-full w-full shadow-[0_80px_20px_rgba(0,0,0,0.25)] border-r-2 border-amber-400
@@ -39,7 +39,7 @@ export default function Sidebar({ setShowSidebar, showSidebar }) {
           flex justify-center items-center
           z-50
           "
-          onClick={HandelSidebarHidingAndShow}
+          onClick={onClick}
         >
           <FaArrowRight
             className={`   transition-all duration-600 delay-100 ${showSidebar ? 'rotate-180 ' : 'rotate-0'}`}
