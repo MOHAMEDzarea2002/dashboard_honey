@@ -69,7 +69,7 @@ const handelEdit = () => {
       </td>
       {/* product Data   */}
       <td className="hidden md:table-cell">{product?.id}</td>
-      <td className="hidden md:table-cell">{product?.description}</td>
+      <td className="hidden md:table-cell line-clamp-2">{product?.description}</td>
       <td>{product?.price}</td>
       <td>{product.name}</td>
       <td className=" flex justify-center items-center">

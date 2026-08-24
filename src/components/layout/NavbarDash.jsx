@@ -39,6 +39,7 @@ console.log(user);
               alt="User settings"
               img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
               rounded
+              className="h-10 max-h-10 w-10"
             />
           }
         >
@@ -52,12 +53,12 @@ console.log(user);
             </Link>
           </DropdownItem>
           <DropdownItem >
-            <Link to="/Products" className=" w-full text-left">
+            <Link to="/products" className=" w-full text-left">
               Products
             </Link>
           </DropdownItem>
           <DropdownItem>
-            <Link to="/Orders" className=" w-full text-left">
+            <Link to="/orders" className=" w-full text-left">
               Orders
             </Link>
           </DropdownItem>

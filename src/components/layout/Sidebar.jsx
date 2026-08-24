@@ -15,8 +15,8 @@ export default function Sidebar({ setShowSidebar, showSidebar }) {
   const dispatch = useDispatch()
   const Links = [
     { id: 1, to: '/', name: 'Dashboard', icon: <MdOutlineDashboard /> },
-    { id: 2, to: '/Products', name: 'Products', icon: <VscOpenInProduct /> },
-    { id: 3, to: '/Orders', name: 'Orders', icon: <IoCartOutline /> },
+    { id: 2, to: '/products', name: 'Products', icon: <VscOpenInProduct /> },
+    { id: 3, to: '/orders', name: 'Orders', icon: <IoCartOutline /> },
   ];
   // Handel Sidebar
   const HandelSidebarHidingAndShow = () => {

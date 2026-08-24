@@ -23,8 +23,8 @@ export default function AppRoutes() {
         <Route element={<PrivateRoute />}>
           <Route element={<DashboardLayout />}>
             <Route path="/" element={<Dashboard />} />
-            <Route path="/Orders" element={<Orders />} />
-            <Route path="/Products" element={<Products />} />
+            <Route path="/orders" element={<Orders />} />
+            <Route path="/products" element={<Products />} />
           </Route>
         </Route>
       </Routes>

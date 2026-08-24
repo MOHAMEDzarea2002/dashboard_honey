@@ -18,10 +18,13 @@ export default function Products() {
   const { products, loading, isEditModalOpen, updateProduct } = useSelector(
     (state) => state.products
   );
-
+  const productsLength = Object.keys(products || {}).length;
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchProducts({ limit: 10 }));
+    if (!productsLength){
+
+dispatch(fetchProducts({ limit: 10 }));
+    }
   }, [dispatch]);
 
   return (
