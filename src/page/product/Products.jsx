@@ -25,17 +25,17 @@ export default function Products() {
   }, [dispatch]);
 
   return (
-    <div className="min-h-screen flex flex-col  p-2  ">
+    <div className="min-h-screen flex flex-col  overflow-hidden p-2  ">
       {/* Title  & Button Add product*/}
-      <div className="flex justify-between items-center">
-        <h2 className="text-2xl  md:text-4xl   my-3 font-semibold relative">Products Management</h2>
+      <div className="flex justify-between items-center my-3">
+        <h2 className="text-lg  md:text-4xl    font-semibold relative">Products Management</h2>
         {/* Button Add product */}
         <button
-          className="bg-amber-400  flex items-center  cursor-pointer rounded-md px-2 py-3 md:text-lg gap-1"
+          className="bg-amber-400 cursor-pointer rounded-sm px-2 py-1 md:text-lg text-[15px] flex items-center  gap-1 "
           onClick={() => setShowAddForm(true)}
         >
           <IoMdAdd />
-          أضافة منتج
+          <span>أضافة منتج</span>
         </button>
       </div>
       {/* Table & ProductForm */}

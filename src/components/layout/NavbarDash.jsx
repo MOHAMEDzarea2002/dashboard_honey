@@ -9,8 +9,8 @@ import {
 import { useSelector } from 'react-redux';
 import {Link} from 'react-router'
 export default function NavbarDash() {
-  const email = useSelector((state) => state.auth);
-
+  const {user} = useSelector((state) => state.auth);
+console.log(user);
   return (
     <Navbar fluid rounded className="!bg-white mb-3 overflow-hidden">
       <div className="search">
@@ -32,7 +32,6 @@ export default function NavbarDash() {
       </div>
       <div className="flex  hover:cursor-pointer">
         <Dropdown
-
           arrowIcon={false}
           inline
           label={
@@ -44,17 +43,23 @@ export default function NavbarDash() {
           }
         >
           <DropdownHeader>
-            <span className="block text-sm">Bonnie Green</span>
-            <span className="block truncate text-sm font-medium">{email}</span>
+            <span className="block text-sm"></span>
+            <span className="block truncate text-sm font-medium">{user.user}</span>
           </DropdownHeader>
           <DropdownItem>
-            <Link to="/dashboard">Dashboard</Link>
+            <Link to="/" className=" w-full text-left">
+              Dashboard
+            </Link>
+          </DropdownItem>
+          <DropdownItem >
+            <Link to="/Products" className=" w-full text-left">
+              Products
+            </Link>
           </DropdownItem>
           <DropdownItem>
-            <Link to="/settings">Settings</Link>
-          </DropdownItem>
-          <DropdownItem>
-            <Link to="/earnings">Earnings</Link>
+            <Link to="/Orders" className=" w-full text-left">
+              Orders
+            </Link>
           </DropdownItem>
           <DropdownDivider />
           <DropdownItem>

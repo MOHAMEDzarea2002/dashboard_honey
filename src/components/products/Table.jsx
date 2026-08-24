@@ -24,7 +24,7 @@ export default function Table({ products }) {
   };
   return (
     <div className="shadow-[0_10px_30px_rgba(0,0,0,0.08)]   rounded-2xl pb-3">
-      <table className="  w-full  rounded-lg">
+      <table className="  w-full  rounded-lg  ">
         <thead className="">
           <tr className="h-15 ">
             <th className="">ACTION</th>

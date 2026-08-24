@@ -30,10 +30,9 @@ export default function DashboardLayout() {
   return (
 
       <section
-        // className={`min-h-screen  grid  ${showSidebar ? ' grid-cols-[250px_1fr] ' : ' grid-cols-[55px_1fr] md:grid-cols-[90px_1fr]'} gap-1.5 transition-all duration-200 overflow-hidden `}
+   
         className="grid min-h-screen transition-[grid-template-columns] duration-300 ease-in-out"
         style={{
-          // استخدام متغير CSS للـ Width بيسهل التحكم فيه بالـ State
           gridTemplateColumns: showSidebar ? '80px 1fr' : '250px 1fr',
         }}
       >
@@ -45,7 +44,6 @@ export default function DashboardLayout() {
 
           <Outlet />
 
-          <div>Footer</div>
         </main>
       </section>
 
