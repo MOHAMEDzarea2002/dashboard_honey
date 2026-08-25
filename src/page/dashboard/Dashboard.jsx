@@ -50,7 +50,7 @@ export default function Dashboard() {
           })}
       </div>
       <div className="my-4 grid grid-cols-1 lg:grid-cols-2  gap-2">
-        {/* <TopOrderChart /> */}
+        <TopOrderChart />
         <LastOrders />
       </div>
     </div>
