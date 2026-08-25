@@ -26,7 +26,7 @@ export default function Dashboard() {
   const lengthStatus = Object.keys(statusOrders || {}).length  ;
 
   useEffect(() => {
-    if (!lengthStatus || (orders && orders.length === 0)) {
+    if (!lengthStatus || !orders && orders.length === 0) {
       dispatch(fetchStatus());
       dispatch(fetchOrders());
     }

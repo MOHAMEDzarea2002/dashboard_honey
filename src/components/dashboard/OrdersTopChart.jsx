@@ -7,7 +7,7 @@ import { Bar, BarChart, CartesianGrid, Legend, Tooltip, XAxis, YAxis } from 'rec
 //
 import { getTopSellingProducts } from '../../utils/SellingProducts';
 const SimpleBarChart = () => {
-  const { orders } = useSelector((state) => state.orders, shallowEqual);
+  const  orders  = useSelector((state) => state.orders.orders, shallowEqual);
 
   const topSellingProducts = useMemo(() => {
     return getTopSellingProducts(orders);
