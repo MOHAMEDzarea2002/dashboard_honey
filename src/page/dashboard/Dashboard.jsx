@@ -6,7 +6,7 @@ import { fetchStatus } from '../../features/dashboardStatus/statusThunk';
 // order thunk
 import { fetchOrders } from '../../features/orders/orderThunk';
 // Redux
-import { useSelector, useDispatch, shallowEqual } from 'react-redux';
+import { useSelector, useDispatch, } from 'react-redux';
 // stats Config
 import { statsConfig } from '../../components/dashboard/config/statsConfig';
 // components
@@ -18,7 +18,7 @@ import LastOrders from '../../components/dashboard/LastOrders';
 export default function Dashboard() {
   // get data from slice redux
   const { statusOrders  } = useSelector((state) => state.Status);
-  const { orders } = useSelector((state) => state.orders, shallowEqual);
+  const { orders } = useSelector((state) => state.orders);
   // dispatch
   const dispatch = useDispatch();
 
