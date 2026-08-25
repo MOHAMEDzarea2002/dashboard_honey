@@ -5,10 +5,11 @@ import { useState } from 'react';
 // Hooks Redux
 import { useDispatch } from 'react-redux';
 // flowbite
-import { Button } from 'flowbite-react';
 import { Alert } from 'flowbite-react';
 // react Icons
 import { HiInformationCircle } from 'react-icons/hi';
+import { FaUserAlt } from 'react-icons/fa';
+
 // authThunk
 import { authLogin } from '../../features/auth/authTThunk';
 export default function LoginFrom() {
@@ -29,21 +30,26 @@ export default function LoginFrom() {
   };
 
   return (
-    <div>
-      {/* Head */}
-      <div className="text-center text-3xl font-bold text-white">Welcome Back</div>
-      {/* container */}
-      <div className="bg-white px-3 p-2 rounded-lg w-[400px] rtl">
+      <div className="bg-white py-2 px-2 rounded-lg w-[350px] md:min-w-[350px] shadow-md">
         {Message ? (
           <Alert color="failure" icon={HiInformationCircle}>
             <span className="font-medium">تنبيه !</span> {Message}
           </Alert>
         ) : null}
 
-        <div className="my-3 font-bold text-center text-4xl">Login</div>
+        <div
+          className=" text-center   relative
+
+        "
+        >
+          <span className="absolute -top-17 left-1/2 -translate-x-1/2 text-5xl bg-blue-500 p-3  rounded-full text-white ">
+            <FaUserAlt />
+          </span>
+          <p className="text-md p-2 ">Admin Log In</p>
+        </div>
         {/* Form input */}
         <form className="flex flex-col text-left" onSubmit={HandelLogin}>
-          <label className="my-2 font-semibold">Email</label>
+          <label className="mb-2 font-semibold">Email</label>
           {/* input Email */}
           <input
             className="text-gray-500 p-2 border-2 rounded-lg border-gray-200 pl-3"
@@ -66,19 +72,23 @@ export default function LoginFrom() {
             }}
           />
           {/* button submit  */}
-          <div className="my-3 ">
-            <Button type="submit" className="w-full cursor-pointer">
+
+          <div className="my-3 w-fit mx-auto">
+            <button
+              type="submit"
+              className="  cursor-pointer bg-blue-700 text-white px-3 py-1.5 rounded-sm "
+            >
               Login
-            </Button>
+            </button>
           </div>
-          <p className="text-gray-600 p-1">
+          {/* <p className="text-gray-600 p-1">
             Don't have an account?
             <Link to={'/register'} className="mx-2 text-blue-500">
               Register hear
             </Link>
-          </p>
+          </p> */}
         </form>
       </div>
-    </div>
+
   );
 }
