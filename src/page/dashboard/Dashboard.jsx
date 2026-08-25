@@ -11,7 +11,7 @@ import { useSelector, useDispatch, } from 'react-redux';
 import { statsConfig } from '../../components/dashboard/config/statsConfig';
 // components
 import StatCard from '../../components/dashboard/StatCard';
-import TopOrderChart from '../../components/dashboard/OrdersTopChart';
+import TopOrderChart from '../../components/dashboard/TopOrderChart';
 import LastOrders from '../../components/dashboard/LastOrders';
 
 
@@ -23,14 +23,13 @@ export default function Dashboard() {
   const dispatch = useDispatch();
 
   // Convert the object to an array so we can determine the length.
-  const lengthStatus = Object.keys(statusOrders || {}).length  ;
 
   useEffect(() => {
-    if (!lengthStatus || !orders && orders.length === 0) {
+    if (!statusOrders || statusOrders.length === 0 && !orders || orders.length === 0) {
       dispatch(fetchStatus());
       dispatch(fetchOrders());
     }
-  }, [dispatch, lengthStatus, orders]);
+  }, [dispatch]);
 
   return (
     <div className="flex flex-col   min-h-screen p-2 ">

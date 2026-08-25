@@ -12,9 +12,9 @@ import {
 } from 'recharts';
 import { getTopSellingProducts } from '../../utils/SellingProducts';
 
-const SimpleBarChart = () => {
+const TopOrderChart = () => {
   const orders = useSelector((state) => state.orders.orders);
-
+console.log(orders)
   const topSellingProducts = useMemo(() => {
     return getTopSellingProducts(orders);
   }, [orders]);
@@ -25,7 +25,7 @@ const SimpleBarChart = () => {
 
       {/* لازم تحدد ارتفاع ثابت أو aspect عن طريق الـ container نفسه مش عن طريق BarChart */}
       <div style={{ width: '100%', height: '70vh' }}>
-        <ResponsiveContainer width="100%" height="100%">
+        <ResponsiveContainer width="100%" height="100%" debounce={300}>
           <BarChart data={topSellingProducts} margin={{ top: 5, right: 0, left: 0, bottom: 5 }}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="name" />
@@ -45,4 +45,4 @@ const SimpleBarChart = () => {
   );
 };
 
-export default SimpleBarChart;
+export default TopOrderChart;

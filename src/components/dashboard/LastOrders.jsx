@@ -1,12 +1,15 @@
+import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 
 export default function LastOrders() {
   const { orders } = useSelector((state) => state.orders);
   // Last  Orders
-  const lastOrder = orders.map((order) => ({
-    ...order,
-    order: order.product.map((items) => ` ${items.name} ${items.quantity}`).join(','),
-  }));
+  const lastOrder = useMemo(()=>{
+   return (orders || []).map((order) => ({
+      ...order,
+      order: order.product.map((items) => ` ${items.name} ${items.quantity}`).join(','),
+    }));
+  },[orders])
 
   // Background by status
   const styleStatus = {
@@ -32,7 +35,7 @@ export default function LastOrders() {
         {/* tbody */}
         <tbody>
           {lastOrder &&
-            lastOrder?.map((order, index) => (
+            lastOrder?.slice(0, 10).map((order, index) => (
               <tr key={index}>
                 <td className="hidden lg:table-cell">{order?.createdAt?._nanoseconds}</td>
                 <td>
@@ -44,7 +47,7 @@ export default function LastOrders() {
                 <td>{order?.name}</td>
                 <td>{order?.phone}</td>
               </tr>
-            )).slice(0,10)}
+            ))}
         </tbody>
       </table>
     </div>
