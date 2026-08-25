@@ -1,10 +1,12 @@
 // Hooks React
 import { useEffect } from 'react';
 
-// Fetch
+// status thunk
 import { fetchStatus } from '../../features/dashboardStatus/statusThunk';
+// order thunk
+import { fetchOrders } from '../features/orders/orderThunk';
 // Redux
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 // stats Config
 import { statsConfig } from '../../components/dashboard/config/statsConfig';
 // components
@@ -12,21 +14,23 @@ import StatCard from '../../components/dashboard/StatCard';
 import TopOrderChart from '../../components/dashboard/OrdersTopChart';
 import LastOrders from '../../components/dashboard/LastOrders';
 
-export default function Dashboard() {
-  const { statusOrders } = useSelector((state) => state.Status);
 
+export default function Dashboard() {
+  // get data from slice redux
+  const { statusOrders  } = useSelector((state) => state.Status);
+  const { orders } = useSelector((state) => state.orders, shallowEqual);
+  // dispatch
   const dispatch = useDispatch();
 
   // Convert the object to an array so we can determine the length.
   const lengthStatus = Object.keys(statusOrders || {}).length  ;
-  useEffect(() => {
-    // the condition is to verify that here is nothing in OrdersStatus
-    // Why? To avoid fetching data from the server every time the page is revisited.
-    if (!lengthStatus ) {
-      dispatch(fetchStatus());
-    }
-  }, [dispatch, lengthStatus]);
 
+  useEffect(() => {
+    if (!lengthStatus || (orders && orders.length === 0)) {
+      dispatch(fetchStatus());
+      dispatch(fetchOrders());
+    }
+  }, [dispatch, lengthStatus, orders]);
 
   return (
     <div className="flex flex-col   min-h-screen p-2 ">

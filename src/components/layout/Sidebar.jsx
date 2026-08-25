@@ -18,10 +18,7 @@ export default function Sidebar({ onToggle, showSidebar }) {
     { id: 2, to: '/products', name: 'Products', icon: <VscOpenInProduct /> },
     { id: 3, to: '/orders', name: 'Orders', icon: <IoCartOutline /> },
   ];
-  // Handel Sidebar
-  // const HandelSidebarHidingAndShow = () => {
-  //   setShowSidebar(!showSidebar);
-  // };
+  
   const handleLogout = () => {
     dispatch(logoutUser());
   };

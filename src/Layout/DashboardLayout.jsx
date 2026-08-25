@@ -4,27 +4,16 @@ import { Outlet } from 'react-router';
 import Sidebar from '../components/layout/Sidebar';
 import NavbarDash from '../components/layout/NavbarDash';
 // Hooks React
-import { useState, useEffect } from 'react';
-// redux
-import { useSelector, useDispatch } from 'react-redux';
-// fetch
-import { fetchOrders } from '../features/orders/orderThunk';
+import { useState } from 'react';
+
+
 
 export default function DashboardLayout() {
   const [showSidebar, setShowSidebar] = useState(true);
-  const { orders } = useSelector((state) => state.orders);
-    const toggleSidebar = ()=> setShowSidebar((prv) => !prv)
-  const dispatch = useDispatch();
 
-  // Convert the object to an array so we can determine the length.
-  const lengthOrders = Object.keys(orders || {}).length;
-  useEffect(() => {
-    // the condition is to verify that here is nothing in OrdersStatus
-    // Why? To avoid fetching data from the server every time the page is revisited.
-    if (!lengthOrders) {
-      dispatch(fetchOrders());
-    }
-  }, [dispatch, lengthOrders]);
+  const toggleSidebar = () => setShowSidebar((prv) => !prv);
+
+
 
   return (
     <section

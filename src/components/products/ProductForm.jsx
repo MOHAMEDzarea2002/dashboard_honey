@@ -15,9 +15,9 @@ export default function ProductForm({ onClose, mode, product }) {
 const { loading } = useSelector((state) => state.products);
 const { category } = useSelector((state) => state.category);
 console.log(category)
-useEffect(()=>{
+useEffect(() => {
   dispatch(fetchCategoryAsync());
-},[])
+}, [dispatch]);
   const initialFormData =
     mode === 'add'
       ? {

@@ -9,10 +9,10 @@ import { getTopSellingProducts } from '../../utils/SellingProducts';
 const SimpleBarChart = () => {
   const { orders } = useSelector((state) => state.orders, shallowEqual);
 
-  const topSellingProducts = useMemo(() => (
-    getTopSellingProducts(orders)
-  ), [orders]);
-console.log(topSellingProducts)
+  const topSellingProducts = useMemo(() => {
+    return getTopSellingProducts(orders);
+  }, [orders]);
+
   return (
     <div className="bg-white rounded-lg p-2 shadow-[0_10px_30px_rgba(0,0,0,0.08)] ">
       <div className=" text-center text-3xl font-semibold">أكثر 5 منتجات مبيعاً</div>

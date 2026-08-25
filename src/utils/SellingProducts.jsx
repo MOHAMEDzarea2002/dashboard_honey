@@ -29,5 +29,5 @@ export const getTopSellingProducts = (orders) => {
   }));
 
   // 3. الترتيب وأخذ أعلى 5 منتجات
-  return productSales.sort((a, b) => b.totalSold - a.totalSold).slice(0, 5);
+  return [...productSales].sort((a, b) => b.totalSold - a.totalSold).slice(0, 5);
 };
