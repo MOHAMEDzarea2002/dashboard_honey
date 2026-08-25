@@ -12,9 +12,8 @@ import { fetchOrders } from '../features/orders/orderThunk';
 
 export default function DashboardLayout() {
   const [showSidebar, setShowSidebar] = useState(true);
-
   const { orders } = useSelector((state) => state.orders);
-
+    const toggleSidebar = ()=> setShowSidebar((prv) => !prv)
   const dispatch = useDispatch();
 
   // Convert the object to an array so we can determine the length.
@@ -35,7 +34,7 @@ export default function DashboardLayout() {
       }}
     >
       <aside className="sticky top-0 h-screen  border-l">
-        <Sidebar onClick={() => setShowSidebar((prv) => !prv)} showSidebar={showSidebar} />
+        <Sidebar onToggle={toggleSidebar} showSidebar={showSidebar} />
       </aside>
       <main className="min-w-0 overflow-y-auto ">
         <NavbarDash />

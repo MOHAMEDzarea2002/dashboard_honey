@@ -1,13 +1,13 @@
 // Hooks reacts
 import { useMemo } from 'react';
 // redux
-import { useSelector } from 'react-redux';
+import { useSelector, shallowEqual } from 'react-redux';
 // Recharts
 import { Bar, BarChart, CartesianGrid, Legend, Tooltip, XAxis, YAxis } from 'recharts';
 //
 import { getTopSellingProducts } from '../../utils/SellingProducts';
 const SimpleBarChart = () => {
-  const { orders } = useSelector((state) => state.orders);
+  const { orders } = useSelector((state) => state.orders, shallowEqual);
 
   const topSellingProducts = useMemo(() => (
     getTopSellingProducts(orders)
@@ -33,7 +33,7 @@ console.log(topSellingProducts)
         <Tooltip />
         <Legend />
         <Bar
-          dataKey="TotalSold"
+          dataKey="totalSold"
           fill="#D97706"
           activeBar={{ fill: 'pink', stroke: 'blue' }}
           radius={[10, 10, 0, 0]}

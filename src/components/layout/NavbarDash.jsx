@@ -10,7 +10,6 @@ import { useSelector } from 'react-redux';
 import {Link} from 'react-router'
 export default function NavbarDash() {
   const {user} = useSelector((state) => state.auth);
-console.log(user);
   return (
     <Navbar fluid rounded className="!bg-white mb-3 overflow-hidden">
       <div className="search">

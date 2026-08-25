@@ -10,7 +10,7 @@ import { CiLogout } from 'react-icons/ci';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { logoutUser } from '../../services/authServices';
-export default function Sidebar({ onClick, showSidebar }) {
+export default function Sidebar({ onToggle, showSidebar }) {
   const [activeLink, setActiveLink] = useState(1);
   const dispatch = useDispatch();
   const Links = [
@@ -39,7 +39,7 @@ export default function Sidebar({ onClick, showSidebar }) {
           flex justify-center items-center
           z-50
           "
-          onClick={onClick}
+          onClick={onToggle}
         >
           <FaArrowRight
             className={`   transition-all duration-600 delay-100 ${showSidebar ? 'rotate-180 ' : 'rotate-0'}`}
