@@ -12,12 +12,13 @@ import { openModelEdit } from '../../features/products/productsSlice';
 
 export default function ProductForm({ onClose, mode, product }) {
   const dispatch = useDispatch();
-const { loading } = useSelector((state) => state.products);
-const { category } = useSelector((state) => state.category);
-console.log(category)
+const  loading  = useSelector((state) => state.products.loading);
+const  category  = useSelector((state) => state.category.category);
+
 useEffect(() => {
   dispatch(fetchCategoryAsync());
 }, [dispatch]);
+
   const initialFormData =
     mode === 'add'
       ? {
@@ -58,7 +59,7 @@ useEffect(() => {
     e.preventDefault();
     if (mode === 'add') {
       await dispatch(createProductAsync(formData));
-      await onClose();
+       onClose();
       Swal.fire({
         title: 'تم الأضافة',
         icon: 'success',
@@ -66,7 +67,7 @@ useEffect(() => {
       });
     } else {
       await dispatch(updateProductAsync({ id: product.id, product: formData }));
-      await handelCloseForm();
+       handelCloseForm();
       Swal.fire({
         title: 'تم التعدبل',
         icon: 'success',

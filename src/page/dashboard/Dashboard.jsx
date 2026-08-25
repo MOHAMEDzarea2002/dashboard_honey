@@ -1,6 +1,5 @@
 // Hooks React
 import { useEffect } from 'react';
-
 // status thunk
 import { fetchStatus } from '../../features/dashboardStatus/statusThunk';
 // order thunk

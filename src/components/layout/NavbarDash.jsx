@@ -7,15 +7,16 @@ import {
   Navbar,
 } from 'flowbite-react';
 import { useSelector } from 'react-redux';
-import {Link} from 'react-router'
+import { Link } from 'react-router';
 export default function NavbarDash() {
-  const {user} = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.auth);
   return (
-    <Navbar fluid rounded className="!bg-white mb-3 overflow-hidden">
-      <div className="search">
-        <input
-          type="search"
-          className="
+    <div className=" overflow-hidden  ">
+      <Navbar fluid rounded className="!bg-white ">
+        <div className="search">
+          <input
+            type="search"
+            className="
         bg-gray-300
         h-8
         p-2
@@ -27,46 +28,47 @@ export default function NavbarDash() {
 
         focus:border-blue-500
         "
-        />
-      </div>
-      <div className="flex  hover:cursor-pointer">
-        <Dropdown
-          arrowIcon={false}
-          inline
-          label={
-            <Avatar
-              alt="User settings"
-              img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-              rounded
-              className="h-10 max-h-10 w-10"
-            />
-          }
-        >
-          <DropdownHeader>
-            <span className="block text-sm"></span>
-            <span className="block truncate text-sm font-medium">{user.user}</span>
-          </DropdownHeader>
-          <DropdownItem>
-            <Link to="/" className=" w-full text-left">
-              Dashboard
-            </Link>
-          </DropdownItem>
-          <DropdownItem >
-            <Link to="/products" className=" w-full text-left">
-              Products
-            </Link>
-          </DropdownItem>
-          <DropdownItem>
-            <Link to="/orders" className=" w-full text-left">
-              Orders
-            </Link>
-          </DropdownItem>
-          <DropdownDivider />
-          <DropdownItem>
-            <Link to="/sign-out"> Sign out</Link>
-          </DropdownItem>
-        </Dropdown>
-      </div>
-    </Navbar>
+          />
+        </div>
+        <div className="flex  hover:cursor-pointer">
+          <Dropdown
+            arrowIcon={false}
+            inline
+            label={
+              <Avatar
+                alt="User settings"
+                img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                rounded
+                className="h-10 max-h-10 w-10"
+              />
+            }
+          >
+            <DropdownHeader>
+              <span className="block text-sm"></span>
+              <span className="block truncate text-sm font-medium">{user.user}</span>
+            </DropdownHeader>
+            <DropdownItem>
+              <Link to="/" className=" w-full text-left">
+                Dashboard
+              </Link>
+            </DropdownItem>
+            <DropdownItem>
+              <Link to="/products" className=" w-full text-left">
+                Products
+              </Link>
+            </DropdownItem>
+            <DropdownItem>
+              <Link to="/orders" className=" w-full text-left">
+                Orders
+              </Link>
+            </DropdownItem>
+            <DropdownDivider />
+            <DropdownItem>
+              <Link to="/sign-out"> Sign out</Link>
+            </DropdownItem>
+          </Dropdown>
+        </div>
+      </Navbar>
+    </div>
   );
 }
