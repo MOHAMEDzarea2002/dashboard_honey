@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 // status thunk
 import { fetchStatus } from '../../features/dashboardStatus/statusThunk';
 // order thunk
-import { fetchOrders } from '../features/orders/orderThunk';
+import { fetchOrders } from '../../features/orders/orderThunk';
 // Redux
 import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 // stats Config
