@@ -9,7 +9,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
 // redux action
 import { openModelEdit } from '../../features/products/productsSlice';
-
 export default function ProductForm({ onClose, mode, product }) {
   const dispatch = useDispatch();
 const  loading  = useSelector((state) => state.products.loading);
@@ -24,18 +23,21 @@ useEffect(() => {
       ? {
           description: '',
           image: '',
-          price: '',
+          price: null,
           name: '',
           category: '',
-          stock: '',
-        }: {
+          weightGrams: null,
+          stock: null,
+        }
+      : {
           description: product.description,
           image: product.image,
           price: product.price,
           name: product.name,
           category: product.category,
+          weightGrams: product.weightGrams,
           stock: product.stock,
-        }
+        };
 
   // state Form
   const [formData, setFormData] = useState(initialFormData);
@@ -112,7 +114,6 @@ useEffect(() => {
           value={formData.price}
           required
         />
-
         <div class=" my-2">
           <label for="countries" class="block mb-2.5 text-sm font-medium text-heading">
             حدد فئة المنتج
@@ -144,6 +145,16 @@ useEffect(() => {
           value={formData.image}
           required
         />
+        <label className="my-2">وزن المنتج </label>
+        <input
+          type="text"
+          name="weightGrams"
+          placeholder="أدخل وزن المنتج بالجرام "
+          className="bg-gray-300 p-2 rounded-md focus:outline-none"
+          onChange={handelForm}
+          value={formData.weightGrams}
+          required
+        />
         <label className="my-2"> مخزون</label>
         <input
           type="number"
@@ -153,6 +164,7 @@ useEffect(() => {
           onChange={handelForm}
           value={formData.stock}
         />
+
         <div className="flex justify-end items-center mt-4 gap-2.5">
           <button
             disabled={loading}
